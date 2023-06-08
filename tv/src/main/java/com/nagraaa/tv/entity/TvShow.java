@@ -1,6 +1,11 @@
 package com.nagraaa.tv.entity;
 
 import jakarta.persistence.*;
+
+import java.sql.Date;
+
+//import java.util.Date;
+
 @Entity
 @Table(name = "tv_shows")
 public class TvShow {
@@ -17,7 +22,7 @@ public class TvShow {
     private String synopsis;
 
     @Column(name = "release_year")
-    private Integer releaseYear;
+    private Date releaseYear;
 
 
 
@@ -25,7 +30,7 @@ public class TvShow {
 
     public TvShow() {}
 
-    public TvShow(Long id, String title, String synopsis, Integer releaseYear) {
+    public TvShow(Long id, String title, String synopsis, Date releaseYear) {
         this.id = id;
         this.title = title;
         this.synopsis = synopsis;
@@ -50,10 +55,10 @@ public class TvShow {
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
-    public Integer getReleaseYear() {
+    public Date getReleaseYear() {
         return releaseYear;
     }
-    public void setReleaseYear(Integer releaseYear) {
+    public void setReleaseYear(Date releaseYear) {
         this.releaseYear = releaseYear;
     }
 }

@@ -12,17 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/api/v1/shows")
-public class TvShowController<TVShow> {
+public class TvShowController {
 
     @Autowired
     private TvShowRepository tvShowRepository;
 
     @Autowired
     private CharacterRepository characterRepository;
-
 
     @GetMapping
     public List<TvShow> getAllTvShows() {
@@ -39,6 +37,7 @@ public class TvShowController<TVShow> {
             return ResponseEntity.notFound().build();
         }
     }
+
     @GetMapping("/{id}/characters")
     public ResponseEntity<List<Character>> getCharactersByTvShowId(@PathVariable(value = "id") Long tvShowId) {
         List<Character> characters = characterRepository.findByTvShowId(tvShowId);
@@ -47,12 +46,14 @@ public class TvShowController<TVShow> {
         }
         return ResponseEntity.ok().body(characters);
     }
+
     @PostMapping
     public ResponseEntity<TvShow> createTvShow(@RequestBody TvShow tvShow) {
         TvShow createdTvShow = tvShowRepository.save(tvShow);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTvShow);
     }
-   @PostMapping("/{tvShowId}/characters")
+
+    @PostMapping("/{tvShowId}/characters")
     public ResponseEntity<Character> createCharacter(
             @PathVariable Long tvShowId,
             @RequestBody Character character
@@ -67,7 +68,4 @@ public class TvShowController<TVShow> {
             return ResponseEntity.notFound().build();
         }
     }
-
-
-
 }

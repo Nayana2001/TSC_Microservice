@@ -1,6 +1,6 @@
 package com.nagraaa.tv.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "characters")
@@ -20,8 +20,6 @@ public class Character {
     @Column(name = "tv_show_id")
     private Long tvShowId;
 
-
-
     public Character() {}
 
     public Character(Long id, String name, String description, Long tvShowId) {
@@ -29,24 +27,30 @@ public class Character {
         this.name = name;
         this.description = description;
         this.tvShowId = tvShowId;
-
     }
+
+    // Getters and setters
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -58,5 +62,4 @@ public class Character {
     public void setTvShowId(Long tvShowId) {
         this.tvShowId = tvShowId;
     }
-
 }
